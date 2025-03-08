@@ -47,8 +47,8 @@ const EditProductForm: React.FC<EditProductFormProps> = ({ open, onClose, id }) 
       setFoto(null);
       onClose(); // Fecha o formulário após o envio
       window.location.reload();
-    } catch (error) {
-      console.error("Erro ao adicionar produto:", error);
+    } catch (error: any) {
+      window.alert(`Erro ao atualizar o produto, Erro:${error.response.data.mensagem}`);
     }
   };
 
@@ -63,8 +63,8 @@ const EditProductForm: React.FC<EditProductFormProps> = ({ open, onClose, id }) 
         setDescricao(product.descricao);
         setValor(product.valor);
         setQuantidade(product.quantidade);
-      } catch (error) {
-        console.error("Erro ao buscar produto:", error);
+      } catch (error: any) {
+        window.alert(`Erro ao buscar o produto, Erro:${error.response.data.mensagem}`);
       }
     };
 
@@ -75,7 +75,7 @@ const EditProductForm: React.FC<EditProductFormProps> = ({ open, onClose, id }) 
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Adicionar Produto</DialogTitle>
+      <DialogTitle>Editar Produto</DialogTitle>
       <DialogContent>
         <form onSubmit={handleSubmit}>
           <TextField
@@ -99,6 +99,7 @@ const EditProductForm: React.FC<EditProductFormProps> = ({ open, onClose, id }) 
             onChange={(e) => setValor(e.target.value)}
             fullWidth
             margin="normal"
+            inputProps={{min: 0}}
           />
           <TextField
             label="Quantidade"
@@ -107,6 +108,7 @@ const EditProductForm: React.FC<EditProductFormProps> = ({ open, onClose, id }) 
             onChange={(e) => setQuantidade(e.target.value)}
             fullWidth
             margin="normal"
+            inputProps={{min: 0}}
           />
           <input
             type="file"

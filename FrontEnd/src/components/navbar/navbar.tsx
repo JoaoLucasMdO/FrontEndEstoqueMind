@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { AppBar, Toolbar, Typography, Button, IconButton, Box } from "@mui/material";
 import InventoryIcon from "@mui/icons-material/Inventory";
-import WarningIcon from "@mui/icons-material/Warning";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AddIcon from '@mui/icons-material/Add';
 import AddProductForm from "../formProduct/addProductForm";
@@ -38,10 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({ userName }) => {
         </IconButton>
         <Button color="inherit">Estoque</Button>
 
-        {/* Ícone e botão para Adicionar Produto */}
-        <IconButton color="inherit" edge="start">
-          <AddIcon />
-        </IconButton>
+        {/* Botão para Adicionar Produto */}
         <Button color="inherit" onClick={handleOpenForm}>Adicionar Produto</Button>
         <AddProductForm open={openForm} onClose={handleCloseForm} />
 

@@ -26,9 +26,9 @@ const Register = () => {
       });
       window.alert(response.data.mensagem);
       window.location.href = '/'
-    } catch (error) {
-        window.alert("Algo deu errado 😿");
-        console.log(error)
+    } catch (error: any) {
+        window.alert(`Algo deu errado 😿, Erro:${error.response.data.mensagem}`);
+        
     }
   };
 

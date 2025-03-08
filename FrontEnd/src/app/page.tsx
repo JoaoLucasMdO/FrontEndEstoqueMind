@@ -15,7 +15,7 @@ const Login = () => {
     formData.append('senha', senha);
 
     try {
-      const response = await api.post('http://localhost:3001/login', formData, {
+      const response = await api.post(`login`, formData, {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -24,13 +24,10 @@ const Login = () => {
       localStorage.setItem('id', response.data.id); 
         window.alert(response.data.mensagem);
         window.location.href = '/home';
-    } catch (error) {
-        window.alert("Algo deu errado 😿");
-        console.log(error);
+    } catch (error: any) {
+        window.alert(`Algo deu errado 😿, ${error.response.data.mensagem}`);
     }
   };
-
-
 
   return (
     <Container component="main" maxWidth="xs">

@@ -46,8 +46,8 @@ const AddProductForm: React.FC<AddProductFormProps> = ({ open, onClose }) => {
       setFoto(null);
       onClose(); // Fecha o formulário após o envio
       window.location.reload();
-    } catch (error) {
-      console.error("Erro ao adicionar produto:", error);
+    } catch (error: any) {
+      window.alert(`Erro ao adicionar o produto, Erro:${error.response.data.mensagem}`);
     }
   };
 
@@ -77,6 +77,7 @@ const AddProductForm: React.FC<AddProductFormProps> = ({ open, onClose }) => {
             onChange={(e) => setValor(e.target.value)}
             fullWidth
             margin="normal"
+            inputProps={{min: 0}}
           />
           <TextField
             label="Quantidade"
@@ -85,6 +86,7 @@ const AddProductForm: React.FC<AddProductFormProps> = ({ open, onClose }) => {
             onChange={(e) => setQuantidade(e.target.value)}
             fullWidth
             margin="normal"
+            inputProps={{min: 0}}
           />
           <input
             type="file"

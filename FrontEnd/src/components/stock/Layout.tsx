@@ -74,8 +74,8 @@ export const Layout = () => {
         });
 
         setProducts(productsWithImageURLs);
-      } catch (error) {
-        console.error("Erro ao buscar produtos:", error);
+      } catch (error: any) {
+        window.alert(`Erro ao buscar produtos, Erro: ${error.reponse.data.mensagem}`);
       }
     };
 
@@ -100,8 +100,8 @@ export const Layout = () => {
       });
       console.log(response);
       window.location.reload();
-    } catch (error) {
-      console.error("Erro ao excluir Produto", error);
+    } catch (error: any) {
+      window.alert(`Erro ao excluir o produto, Erro: ${error.reponse.data.mensagem}`);
     }
   };
 

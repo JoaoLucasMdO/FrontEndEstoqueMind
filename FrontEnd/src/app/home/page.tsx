@@ -15,19 +15,18 @@ const App = () => {
             try{
                 const id = localStorage.getItem('id');
                 const response = await api.get(`usuarios/${id}`);
-                setName(response.data.nome)
-            } catch(error){
-                window.alert("Algo deu errado 😿");
-                console.log(error);
+                setName(response.data.nome);
+
+            } catch(error: any){
+                window.alert(`Algo deu errado 😿, Erro:${error.response.data.mensagem}`);
             }
         }
-        fetchData();
+       fetchData();  
     },[])
 
     return (
       <div>
         <Navbar userName={name} />
-        {/* Conteúdo da página */}
         <main>
           <Typography variant="h4" align="center" sx={{ marginTop: 4 }}>
             <Layout />
